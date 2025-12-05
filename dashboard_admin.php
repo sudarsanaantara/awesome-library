@@ -40,7 +40,7 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 
 <div class="content">
     <div class="user-profile-widget">
-        <a href="#" class="profile-btn" title="Akses Profil">
+        <a href="fitur_admin.php?tab=profile" class="profile-btn" title="Akses Profil Admin">
             <span class="profile-icon">👤</span> 
         </a>
     </div>
