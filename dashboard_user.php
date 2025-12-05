@@ -43,7 +43,7 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
             <a href="dashboard_user.php?page=home" class="nav-link <?= ($page == 'home') ? 'active' : '' ?>">Home</a>
             <a href="dashboard_user.php?page=riwayat" class="nav-link <?= ($page == 'riwayat') ? 'active' : '' ?>">Riwayat Pinjaman</a>
             
-            <a href="dashboard_user.php?page=profile" class="nav-link profile-icon-link <?= ($page == 'profile') ? 'active' : '' ?>" title="Profile User">
+            <a href="fitur_user.php?mode=profile" class="nav-link profile-icon-link <?= ($page == 'profile') ? 'active' : '' ?>" title="Profile User">
                 👤
                 </a>
 
@@ -64,11 +64,13 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
             <div class="recommendation-section">
                 <h3>Rekomendasi Buku Terbaru</h3>
                 <div class="book-list">
+                    <?php $i = 1; ?>
                     <?php foreach ($rekomendasi_buku as $buku): ?>
                         <div class="book-card">
                             <h4><?= htmlspecialchars($buku['judul']) ?></h4>
                             <p>Penulis: <?= htmlspecialchars($buku['penulis']) ?></p>
-                            <button class="btn-primary">Lihat Detail</button>
+                            <?php $book_id = $i++; ?>
+                            <a href="fitur_user.php?mode=book_detail&id=<?= $book_id ?>" class="btn-primary">Lihat Detail</a>
                         </div>
                     <?php endforeach; ?>
                 </div>
