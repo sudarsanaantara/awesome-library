@@ -100,13 +100,13 @@ body {
     font-size: 0.95rem;
 }
 
-.message-box:contains("✅") {
+.message-box-success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
 }
 
-.message-box:contains("❌") {
+.message-box-fail {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;

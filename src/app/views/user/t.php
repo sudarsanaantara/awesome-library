@@ -1,9 +1,8 @@
 <?php
-session_start();
 
 // Simulasi data user dan data buku
-$username = "User Eko"; 
-$user_id = 123; 
+$username = "User Eko";
+$user_id = 123;
 $rekomendasi_buku = [
     ["judul" => "Filosofi Teras", "penulis" => "Henry Manampiring"],
     ["judul" => "Atomic Habits", "penulis" => "James Clear"],
@@ -19,33 +18,23 @@ $riwayat_pinjaman = [
 if (isset($_GET["action"]) && $_GET["action"] === "logout") {
     session_unset();
     session_destroy();
-    header("Location: login.php"); 
+    header("Location: login.php");
     exit();
 }
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 ?>
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard User - Perpustakaan</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
-<body>
-
 <div class="user-layout">
     <div class="header-bar">
         <h1>Perpustakaan Digital</h1>
         <div class="user-nav">
-            <a href="dashboard_user.php?page=home" class="nav-link <?= ($page == 'home') ? 'active' : '' ?>">Home</a>
-            <a href="dashboard_user.php?page=riwayat" class="nav-link <?= ($page == 'riwayat') ? 'active' : '' ?>">Riwayat Pinjaman</a>
-            
-            <a href="fitur_user.php?mode=profile" class="nav-link profile-icon-link <?= ($page == 'profile') ? 'active' : '' ?>" title="Profile User">
+            <a href="dashboard_user.php?page=home" class="nav-link active">Dashboard</a>
+            <a href="dashboard_user.php?page=riwayat" class="nav-link">Riwayat Pinjaman</a>
+
+            <a href="fitur_user.php?mode=profile" class="nav-link profile-icon-link" title="Profile User">
                 👤
-                </a>
+            </a>
 
             <a href="dashboard_user.php?action=logout" class="logout-link">Logout</a>
         </div>
@@ -78,7 +67,7 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 
         <?php elseif ($page == "riwayat"): ?>
             <h2 class="page-title">Riwayat Pinjaman</h2>
-            
+
             <div class="history-table">
                 <h4>Daftar Pinjaman</h4>
                 <table>
@@ -90,7 +79,8 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; foreach ($riwayat_pinjaman as $item): ?>
+                        <?php $i = 1;
+                        foreach ($riwayat_pinjaman as $item): ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= htmlspecialchars($item['judul']) ?></td>
@@ -108,14 +98,10 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
                 <p>Nama: <strong><?= htmlspecialchars($username) ?></strong></p>
                 <p>ID: <?= htmlspecialchars($user_id) ?></p>
                 <p>Status Akun: Aktif</p>
-                </div>
-        
+            </div>
+
         <?php else: ?>
             <p>Halaman tidak ditemukan.</p>
         <?php endif; ?>
     </div>
 </div>
-
-<script src="script.js"></script>
-</body>
-</html>
