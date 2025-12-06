@@ -1,39 +1,8 @@
-<?php
-
-$message = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    
-    $NamaLengkap  = $_POST["fullname"];
-    $NamaPengguna = $_POST["username"];
-    $AlamatEmail  = $_POST["email"];
-    $Password     = $_POST["password"];
-    $Konfirmasi   = $_POST["confirmPassword"];
-
-    if ($Password !== $Konfirmasi) {
-        $message = "Password dan konfirmasi password tidak sama!";
-    } else {
-        $message = "Registrasi berhasil! Silakan login.";
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
 <div class="login-container">
     <h2>Registrasi</h2>
 
-    <?php if ($message): ?>
-        <div class="message-box"><?= $message ?></div>
+    <?php if ($data["message"]): ?>
+        <div class="message-box <?= $data['failed'] ? 'message-box-fail' : 'message-box-success' ?>"><?= $data["message"] ?></div>
     <?php endif; ?>
 
     <form id="registerForm" action="" method="POST">
@@ -65,9 +34,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Daftar</button>
     </form>
 
-    <p>Sudah punya akun? <a href="login.php">Login</a></p>
+    <p>Sudah punya akun? <a href="<?= BASEURL ?>/login">Login</a></p>
 </div>
-
-<script src="script.js"></script>
-</body>
-</html>

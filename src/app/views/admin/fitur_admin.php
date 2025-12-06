@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // --- DATA SIMULASI ---
 $books = [
     1 => ['id' => 1, 'judul' => 'Pemrograman Web Dasar', 'penulis' => 'Ria Sari', 'kategori' => 'Teknologi'],
