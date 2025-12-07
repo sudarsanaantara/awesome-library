@@ -20,18 +20,25 @@
             <tr>
                 <th>No</th>
                 <th>Username</th>
+                <th>Email</th>
                 <th>Role</th>
                 <th>Aksi</th>
             </tr>
+            <?php $i = 1 ?>
+            <?php foreach($data['users'] as $user): ?>
             <tr>
-                <td>1</td>
-                <td>eko_1999</td>
-                <td>User</td>
+                <td><?= $i ?></td>
+                <td><?= $user['username'] ?></td>
+                <td><?= $user['email'] ?></td>
+                <td><?= $user['is_admin'] ? "Admin" : "User" ?></td>
                 <td>
-                    <button class="btn-action detail-btn">Detail</button>
-                    <button class="btn-action delete-btn">Hapus</button>
+                    <?php if(!$user['is_admin']): ?>
+                        <a href="<?= BASEURL ?>/admin/pengguna/hapus/<?= $user['id'] ?>" class="btn-action delete-btn" onclick="return confirm('Hapus dengan username <?= htmlspecialchars($user['username']) ?>')">Hapus</button>
+                    <?php endif; ?>
                 </td>
             </tr>
+            <?php $i++ ?>
+            <?php endforeach; ?>
         </table>
     </div>
 </div>

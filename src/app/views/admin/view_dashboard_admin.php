@@ -26,7 +26,7 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 
 <div class="content">
     <div class="user-profile-widget">
-        <a href="<?= BASEURL ?>/admin/profile" class="profile-btn" title="Akses Profil Admin">
+        <a href="<?= BASEURL ?>/admin/profile" class="profile-btn" title="Profil Admin">
             <span class="profile-icon">👤</span>
         </a>
     </div>
@@ -36,17 +36,17 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
         <div class="stats">
             <div class="card">
                 <p>User Aktif</p>
-                <h3>28</h3>
+                <h3><?= $data["total_user"] ?></h3>
             </div>
 
             <div class="card">
                 <p>Total Buku</p>
-                <h3>134</h3>
+                <h3><?= $data["total_book"]?></h3>
             </div>
 
             <div class="card">
                 <p>Peminjaman Berjalan</p>
-                <h3>9</h3>
+                <h3><?= $data["total_lend"] ?></h3>
             </div>
         </div>
     </div>

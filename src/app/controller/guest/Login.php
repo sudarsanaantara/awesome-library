@@ -26,13 +26,14 @@ class Login extends Controller
                         $_SESSION["login"] = true;
                         $_SESSION['role'] = 'admin';
                         header("Location: " . BASEURL . "/admin/dashboard");
-                        exit();
                     } else {
                         $_SESSION["login"] = true;
                         $_SESSION["role"] = "user";
                         header("Location: " . BASEURL . "/user/dashboard");
-                        exit();
                     }
+                    setcookie("id", $user['id']);
+                    setcookie("key", hash("sha256", $user['password'] . $user['username']));
+                    exit();
                 } else {
                     $this->data['message'] = "❌ Username atau password salah!";
                     $this->data['failed'] = true;

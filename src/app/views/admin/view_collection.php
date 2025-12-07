@@ -24,15 +24,18 @@
                 <th>Kategori</th>
                 <th>Aksi</th>
             </tr>
+            <?php ;$i = 1;foreach($data['books'] as $book): ?>
             <tr>
-                <td>1</td>
-                <td>Pemrograman Web</td>
-                <td>Teknologi</td>
+                <td><?= $i ?></td>
+                <td><?= htmlspecialchars($book['title']) ?></td>
+                <td><?= htmlspecialchars($data['kategori_buku'][$book['category_id']-1]["category_name"]) ?></td>
                 <td>
-                    <button class="btn-action edit-btn" title="Edit"> Edit</button>
-                    <button class="btn-action delete-btn">Hapus</button>
+                    <!----<button class="btn-action edit-btn" title="Edit"> Edit</button>--->
+                    <a href="<?= BASEURL ?>/admin/koleksi_buku/hapus/<?= $book['id'] ?>" class="btn-action delete-btn" onclick="return confirm('Hapus buku <?= htmlspecialchars($book['title']) ?>')">Hapus</a>
                 </td>
+                <?php $i++ ?>
             </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </div>
