@@ -25,7 +25,7 @@ Hanya pernah ditest menggunakan Laravel sehingga tutorial ini akan berfokus pada
    git clone https://github.com/sudarsanaantara/awesome-library.git
    ```
 2. Pindahkan folder hasil clone ke dalam folder ke www (folder pada Laravel).
-3. **Import database** dari /docs/database.sql.
+3. **Import database** dari /docs/db_awesome.sql.
 4. Setting **config file** pada ***/src/app/core/Config.php*** (yang paling diutamakan adalah variabel global BASEURL, pastikan tidak mengakhiri url dengan '/')
 5. Jalankan di browser: http://localhost/awesome-library/
 
