@@ -9,9 +9,15 @@ class User_model
         $this->db = new Database;
     }
 
-    public function getAllUsers()
+    public function getAllUsersWithAdmins()
     {
         $this->db->query("SELECT * FROM " . $this->tb_name);
+        return $this->db->getAllResults();
+    }
+
+    public function getAllUsers()
+    {
+        $this->db->query("SELECT * FROM " . $this->tb_name . " WHERE is_admin=0");
         return $this->db->getAllResults();
     }
 
@@ -51,7 +57,14 @@ class User_model
         $this->db->bind("password", $data['password']);
 
         $result = $this->db->getSingleResult();
-        var_dump($result);
+        return $result;
+    }
+
+    public function deleteUser($id) {
+        $this->db->query("DELETE FROM " . $this->tb_name . " WHERE id=:id AND is_admin=0");
+        $this->db->bind("id", $id);
+        $result = $this->db->getSingleResult();
+        return $result;
     }
 
     public function loginTest($username, $password)
