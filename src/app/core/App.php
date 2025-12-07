@@ -39,12 +39,16 @@ class App
             $this->role = "guest";
             if (isset($url[0])) {
                 $this->controller = $url[0];
+                unset($url[0]);
             }
             if (!file_exists("src/app/controller/" . $this->role . "/" . $this->controller . ".php")) $this->controller = "NotFound";
         }
 
         require_once 'src/app/controller/' . $this->role . '/' . $this->controller . '.php';
         $this->controller = new $this->controller;
+
+        unset($url[0]);
+
         if ($this->role == "guest") {
             if (isset($url[1])) {
                 if (method_exists($this->controller, $url[1])) {
