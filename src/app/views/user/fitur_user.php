@@ -106,31 +106,7 @@ if (isset($_GET['msg'])) {
             </div>
             
         <?php elseif ($mode === 'book_detail' && $book_detail): ?>
-            <h2 class="page-title">Detail Buku</h2>
-            <div class="detail-container">
-                <div class="book-details">
-                    <h3><?= htmlspecialchars($book_detail['judul']) ?></h3>
-                    <p><strong>Penulis:</strong> <?= htmlspecialchars($book_detail['penulis']) ?></p>
-                    <p><strong>Kategori:</strong> <?= htmlspecialchars($book_detail['kategori']) ?></p>
-                    <p><strong>Stok Tersedia:</strong> <span class="stock-status <?= ($book_detail['stok'] > 0) ? 'in-stock' : 'out-of-stock' ?>"><?= $book_detail['stok'] ?></span></p>
-                    
-                    <h4>Deskripsi</h4>
-                    <p><?= htmlspecialchars($book_detail['deskripsi']) ?></p>
-
-                    <form method="POST" action="fitur_user.php">
-                        <input type="hidden" name="action" value="pinjam_buku">
-                        <input type="hidden" name="book_id" value="<?= $book_detail['id'] ?>">
-                        
-                        <?php if ($book_detail['stok'] > 0): ?>
-                            <button type="submit" class="btn-primary pinjam-btn" title="Pinjam buku ini">+ Pinjam & Baca</button>
-                        <?php else: ?>
-                            <button type="button" class="btn-disabled" disabled>Stok Habis</button>
-                        <?php endif; ?>
-                        
-                        <a href="dashboard_user.php?page=home" class="btn-cancel">Kembali</a>
-                    </form>
-                </div>
-            </div>
+            
 
         <?php else: ?>
             <h2 class="page-title">Buku Tidak Ditemukan</h2>

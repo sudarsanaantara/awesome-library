@@ -16,8 +16,22 @@ class Book_model
     }
 
     public function getAllBooks() {
-        $this->db->query("SELECT * FROM " . $this->tb_book);
+        $this->db->query("SELECT * FROM " . $this->tb_book . " ORDER BY id DESC");
         return $this->db->getAllResults();
+    }
+
+    public function getBookById($id) {
+        $this->db->query("SELECT * FROM " . $this->tb_book . " WHERE id=:id");
+        $this->db->bind("id", $id);
+        return $this->db->getSingleResult();
+    }
+
+    public function searchBooksByInformation($info) {
+        $pattern = '%' . trim($info) . '%';
+        $this->db->query("SELECT * FROM " . $this->tb_book . " WHERE title LIKE :info OR author LIKE :info");
+        $this->db->bind("info", $pattern);
+        $result = $this->db->getAllResults();
+        return $result;
     }
 
     public function addNewBook($data) {
